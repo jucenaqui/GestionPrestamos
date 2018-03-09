@@ -3,8 +3,10 @@ var clienteController = require('../controllers/cliente');
 
 var route = express.Router();
 
+var tabla = 'clientes';
+
 route.get('/clientes',( req, res )=>{
-    clienteController.getClientes(req, res);
+    clienteController.getClientes(req, res, tabla);
 });
 
 
