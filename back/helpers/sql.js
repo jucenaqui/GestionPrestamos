@@ -13,7 +13,7 @@ query.getQueryGeneral = (req, res, tabla)=>{
   
     sql.connect(config.sql).then((pool) => {
         return  pool.request()
-            .query(query)
+            .query("select * from "+tabla)
     }).then(result => {
         sql.close();
         res.status(200).send({data:result.recordset});
