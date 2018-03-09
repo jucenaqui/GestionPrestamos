@@ -1,0 +1,11 @@
+{
+  "name": "gestion-prestamos-back",
+  "version": "1.0.0",
+  "description": "gestionar prestamos a clientes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jucenaqui",
+  "license": "ISC"
+}
