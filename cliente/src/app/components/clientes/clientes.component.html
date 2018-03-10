@@ -1,0 +1,30 @@
+<div class="col-lg-6">
+
+  
+    <form #formCliente="ngForm" (ngSubmit)="crearCliente(formCliente)" class="col-lg-7" novalidate>
+        <h1>{{titulo}}</h1>
+        <p>
+            <label for="identificacion">Identificación</label>
+            <input type="number" name="identificacion" #identificacion="ngModel" ng-Valid [(ngModel)]="cliente.identificacion" class="form-control" ngModel required identificacion>
+            <span class="aviso" *ngIf="!identificacion.valid && identificacion.touched">*Identificación es obligatoria</span>
+        </p>
+        <p>
+            <label for="nombres">Nombres</label>
+            <input type="text" name="nombres" #nombres="ngModel" [(ngModel)]="cliente.nombres" ngModel class="form-control" required >
+            <span class="aviso" *ngIf="!nombres.valid && nombres.touched">*Nombres son obligatorios</span>
+        </p>
+        <p>
+            <label for="apellidos">Apellidos</label>
+            <input type="text" name="apellidos" #apellidos="ngModel" [(ngModel)]="cliente.apellidos" ngModel class="form-control" required >
+            <span class="aviso" *ngIf="!apellidos.valid && apellidos.touched">*Apellidos son obligatorios</span>
+        </p>
+        <p>
+            <label for="fNacimiento">Fecha Nacimiento</label>
+            <input type="date" name="fNacimiento" #fNacimiento="ngModel" [(ngModel)]="cliente.fNacimiento" ngModel class="form-control" required >
+            <span class="aviso" *ngIf="!fNacimiento.valid && fNacimiento.touched">*Fecha Nacimiento es obligatoria</span>
+        </p>
+        <input type="submit" value="Guardar" class="btn btn-success" [disabled]="!formCliente.form.valid">
+    </form>
+    <div *ngIf="messageSuccess" class="alert alert-success">{{messageSuccess}}</div>
+    <div *ngIf="messageError" class="alert alert-primary">{{messageError}}</div>
+</div>

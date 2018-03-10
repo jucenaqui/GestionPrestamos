@@ -1,0 +1,32 @@
+<div class="col-lg-6">
+
+
+    <form #formSolicitud="ngForm" (ngSubmit)="ValidarSolicitud(formSolicitud)" class="col-lg-7" novalidate>
+        <h1>{{titulo}}</h1>
+        <p>
+            <label for="nombreEmpresa">Nombre Empresa</label>
+            <input type="text" name="nombreEmpresa" #nombreEmpresa="ngModel" [(ngModel)]="solicitud.nombreEmpresa" class="form-control" required>
+            <span class="aviso" *ngIf="!nombreEmpresa.valid && nombreEmpresa.touched">*Nombre es obligatorio</span>
+        </p>
+        <p>
+            <label for="nit">Nit</label>
+            <input type="number" name="nit" #nit="ngModel" [(ngModel)]="solicitud.nit" class="form-control" required>
+            <span class="aviso" *ngIf="!nit.valid && nit.touched">*solicitud es obligatoria</span>
+        </p>
+        <p>
+            <label for="salario">Salario</label>
+            <input type="number" name="salario" #salario="ngModel" [(ngModel)]="solicitud.salario" class="form-control"
+                required>
+            <span class="aviso" *ngIf="!salario.valid && salario.touched">*salario es obligatorio</span>
+        </p>
+        <p>
+            <label for="fIngreso">Fecha Ingreso</label>
+            <input type="date" name="fIngreso" #fIngreso="ngModel" [(ngModel)]="solicitud.fIngreso" class="form-control"
+                required>
+            <span class="aviso" *ngIf="!fIngreso.valid && fIngreso.touched">*Fecha Ingreso es obligatorio</span>
+        </p>
+        <input type="submit" value="Verificar" class="btn btn-success" [disabled]="!formSolicitud.form.valid">
+    </form>
+    <div *ngIf="messageSuccess" class="alert alert-success">{{messageSuccess}}</div>
+    <div *ngIf="messageError" class="alert alert-primary">{{messageError}}</div>
+</div>
