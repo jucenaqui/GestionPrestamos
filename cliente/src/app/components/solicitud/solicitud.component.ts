@@ -14,6 +14,7 @@ import { Solicitud } from '../../models/solicitud';
 })
 export class SolicitudComponent implements OnInit {
 
+    public titulo: String = 'Solicitud Crédito';
     public solicitud: Solicitud;
     public messageSuccess: string;
     public messageError: string;
