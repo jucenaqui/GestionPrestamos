@@ -7,7 +7,7 @@
     "start": "nodemon server.js",
     "test": "mocha"
   },
-  "author": "jucenaqui",
+  "author": "jucenaqui -- https://github.com/jucenaqui",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
