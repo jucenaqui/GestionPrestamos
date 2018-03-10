@@ -71,7 +71,7 @@ query.execute = (req, res, procedure) => {
             if(err){
                 res.status(500).send({message:err});
             }
-            res.status(200).send({ data: result});
+            res.status(200).send({ data: result.recordsets});
 
         })
         
