@@ -30,13 +30,14 @@ query.getQueryGeneral = (req, res, tabla)=>{
  * @param {*} tabla la tabla a la que se va a consultar
  */
 query.getQueryConParametro = (req, res, tabla) => {
-
+debugger
     var param = Object.keys(req.params)[0];
-    var query = "select top 1 from " + tabla + " where " + param + "=" + req.params[param]
+    var query = "select top 1 * from " + tabla + " where " + param + "=" + req.params[param]
     sql.connect(config.sql).then((pool) => {
         return pool.request()
             .query(query)
     }).then(result => {
+        debugger;
         sql.close();
         res.status(200).send({ data: result.recordset });
     }).catch(err => {
@@ -48,5 +49,36 @@ query.getQueryConParametro = (req, res, tabla) => {
 query.getConnecion = ()=>{
     return sql.connect(config.sql);
 }
+
+query.execute = (req, res, procedure) => {
+
+    const params = req.body;
+    sql.connect(config.sql).then( conn => {
+     
+        const request = new sql.Request();
+        const params = req.body;
+
+        for (let i in params) {
+            if (typeof params[i] == 'object') {
+                request.input(i, params[i][0]);
+            } else {
+                request.input(i, params[i]);
+            }
+        }
+
+        request.execute(procedure, (err, result) => {
+            sql.close();
+            if(err){
+                res.status(500).send({message:err});
+            }
+            res.status(200).send({ data: result});
+
+        })
+        
+    })
+   
+}
+
+
 
 module.exports = query;
