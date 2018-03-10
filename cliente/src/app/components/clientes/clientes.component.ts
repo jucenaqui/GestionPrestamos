@@ -5,7 +5,7 @@ import * as moment from 'moment';
 // clientes
 import { Cliente } from '../../models/cliente';
 
-import { ClienteService } from '../clientes/cliente.service';
+import { ClienteService } from '../../servicios/cliente.service';
 import { FormControl } from '@angular/forms';
 
 @Component({

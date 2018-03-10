@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 // routing
 import { appRoutingProviders, Routing } from './app.routing';
@@ -23,7 +23,7 @@ import { SolicitudComponent } from './components/solicitud/solicitud.component';
     BrowserModule,
     Routing,
     FormsModule,
-    HttpModule
+    HttpClientModule
   ],
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]
